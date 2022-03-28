@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
@@ -41,7 +41,6 @@ public class CarAI : MonoBehaviour
     private bool allowMovement;
     private int NavMeshLayerBite;
     private List<Vector3> waypoints = new List<Vector3>();
-    private bool limiter;
     private float LocalMaxSpeed;
     private int Fails;
     private float MovementTorque = 1;
@@ -51,7 +50,6 @@ public class CarAI : MonoBehaviour
         currentWayPoint = 0;
         allowMovement = true;
         move = true;
-        limiter = false;
     }
 
     void Start()
@@ -111,43 +109,11 @@ public class CarAI : MonoBehaviour
 
             if (currentWayPoint >= waypoints.Count - 3)
             {
-                if (limiter == false)
-                {
-                    limiter = true;
-                    if (Fails > 50)
-                    {
-                        RePath();
-                    }
-                    else
-                    {
-                        CreatPath();
-                    }
-                }
+                CreatePath();
             }
         }
 
-        void RePath()
-        {
-            if (waypoints.Count > 2)
-            {
-                if (currentWayPoint == waypoints.Count)
-                {
-                    currentWayPoint--;
-                    PostionToFollow = waypoints[currentWayPoint];
-                    MovementTorque = -1;
-                    limiter = false;
-                    allowMovement = true;
-                    Debug.Log("done");
-                }
-            }
-            else
-            {
-                Fails = 0;
-                limiter = false;
-            }
-        }
-
-        void CreatPath()
+        void CreatePath()
         {
             if (CustomDestination == null)
             {
@@ -159,7 +125,6 @@ public class CarAI : MonoBehaviour
                 {
                     debug("No custom destination assigned and Patrol is set to false", false);
                     allowMovement = false;
-                    limiter = false;
                 }
             }
             else
@@ -225,11 +190,10 @@ public class CarAI : MonoBehaviour
             }
             else
             {
-                debug("Failed to generate a random path. Invaild Path. Generating a new one", false);
+                debug("Failed to generate a random path. Invalid Path. Generating a new one", false);
                 Fails++;
             }
         }
-        limiter = false;
     }
 
     public void CustomPath(Transform destination) //Creates a path to the Custom destination
@@ -275,11 +239,10 @@ public class CarAI : MonoBehaviour
             }
             else
             {
-                debug("Failed to generate a Custom path. Invaild Path. Generating a new one", false);
+                debug("Failed to generate a Custom path. Invalid Path. Generating a new one", false);
                 Fails++;
             }
         }
-        limiter = false;
     }
 
     private bool CheckForAngle(Vector3 pos, Vector3 source, Vector3 direction) //calculates the angle between the car and the waypoint 

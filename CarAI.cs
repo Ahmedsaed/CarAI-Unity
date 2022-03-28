@@ -68,13 +68,9 @@ public class CarAI : MonoBehaviour
     private void CalculateNavMashLayerBite()
     {
         if (NavMeshLayers == null || NavMeshLayers[0] == "AllAreas")
-        {
             NavMeshLayerBite = NavMesh.AllAreas;
-        }
         else if (NavMeshLayers.Count == 1)
-        {
             NavMeshLayerBite += 1 << NavMesh.GetAreaFromName(NavMeshLayers[0]);
-        }
         else
         {
             foreach (string Layer in NavMeshLayers)
@@ -94,23 +90,17 @@ public class CarAI : MonoBehaviour
         void wayPointManager()
         {
             if (currentWayPoint >= waypoints.Count)
-            {
                 allowMovement = false;
-            }
             else
             {
                 PostionToFollow = waypoints[currentWayPoint];
                 allowMovement = true;
                 if (Vector3.Distance(carFront.position, PostionToFollow) < 2)
-                {
                     currentWayPoint++;
-                }
             }
 
             if (currentWayPoint >= waypoints.Count - 3)
-            {
                 CreatePath();
-            }
         }
 
         void CreatePath()
@@ -118,9 +108,7 @@ public class CarAI : MonoBehaviour
             if (CustomDestination == null)
             {
                 if (Patrol == true)
-                {
                     RandomPath();
-                }
                 else
                 {
                     debug("No custom destination assigned and Patrol is set to false", false);
@@ -128,9 +116,8 @@ public class CarAI : MonoBehaviour
                 }
             }
             else
-            {
-                CustomPath(CustomDestination);
-            }
+               CustomPath(CustomDestination);
+            
         }
 
         void ListOptimizer()
@@ -252,13 +239,9 @@ public class CarAI : MonoBehaviour
         float Angle = Mathf.Acos(CosAngle) * Mathf.Rad2Deg;
 
         if (Angle < AIFOV)
-        {
             return true;
-        }
         else
-        {
             return false;
-        }
     }
 
     private void ApplyBrakes() // Apply brake torque 
@@ -303,13 +286,9 @@ public class CarAI : MonoBehaviour
     void Movement() // moves the car forward and backward depending on the input
     {
         if (move == true && allowMovement == true)
-        {
             allowMovement = true;
-        }
         else
-        {
             allowMovement = false;
-        }
 
         if (allowMovement == true)
         {
@@ -335,14 +314,11 @@ public class CarAI : MonoBehaviour
                 frontLeft.motorTorque = 0;
             }
             else
-            {
                 ApplyBrakes();
-            }
+            
         }
         else
-        {
             ApplyBrakes();
-        }
     }
 
     void debug(string text, bool IsCritical)
@@ -350,13 +326,9 @@ public class CarAI : MonoBehaviour
         if (Debugger)
         {
             if (IsCritical)
-            {
                 Debug.LogError(text);
-            }
             else
-            {
                 Debug.Log(text);
-            }
         }
     }
 
@@ -367,24 +339,16 @@ public class CarAI : MonoBehaviour
             for (int i = 0; i < waypoints.Count; i++)
             {
                 if (i == currentWayPoint)
-                {
                     Gizmos.color = Color.blue;
-                }
                 else
                 {
                     if (i > currentWayPoint)
-                    {
                         Gizmos.color = Color.red;
-                    }
                     else
-                    {
                         Gizmos.color = Color.green;
-                    }
                 }
-
                 Gizmos.DrawWireSphere(waypoints[i], 2f);
             }
-
             CalculateFOV();
         }
 

@@ -12,12 +12,6 @@ public class SensorManager : MonoBehaviour
         carAI = gameObject.transform.parent.GetComponent<CarAI>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider car)
     {
         if (car.gameObject.CompareTag(tagName))

@@ -5,16 +5,16 @@ A C# script that uses NavMesh for path finding and simulates vehicle movement us
 ## Table of content:
 
 - Setup The Scene
-  - [Bake NavMesh Surface](https://github.com/Ahmedsaed/CarAI-Unity#1--bake-navmesh-surface) 
-  - [Car Model Components](https://github.com/Ahmedsaed/CarAI-Unity#2--car-model-components)
+  - [Bake NavMesh Surface](#1--bake-navmesh-surface) 
+  - [Car Model Components](#2--car-model-components)
 - CarAI Package
-  - [Setup CarAI.cs](https://github.com/Ahmedsaed/CarAI-Unity#1--setup-caraics)
-  - [Options](https://github.com/Ahmedsaed/CarAI-Unity#options)
+  - [Setup CarAI.cs](#1--setup-caraics)
+  - [Options](#options)
 - Programming
-  - [Setting Variables through code](https://github.com/Ahmedsaed/CarAI-Unity#1--setting-variables-through-code)
-  - [Calling methods through code](https://github.com/Ahmedsaed/CarAI-Unity#2--calling-methods-through-code)
+  - [Setting Variables through code](#1--setting-variables-through-code)
+  - [Calling methods through code](#2--calling-methods-through-code)
 - Common Issues And How To Fix Them
-  - [AI can't create a path](https://github.com/Ahmedsaed/CarAI-Unity#1--ai-cant-create-the-path)
+  - [AI can't create a path](#1--ai-cant-create-the-path)
   
 ## Requirements:
 
@@ -98,7 +98,7 @@ After The NavMesh is Backed, A color (purple color) will appear on the street wh
 
 #### 3- WheelColliders:
 
-**Note**: it's highly recommended to [watch this tutorial on wheel colliders](youtu.be/j6_SMdWeGFI)
+**Note**: it's highly recommended to [watch this tutorial on wheel colliders](https://youtu.be/j6_SMdWeGFI)
 
 Select all the wheels then "Add component" and choose "Wheel Collider"
 

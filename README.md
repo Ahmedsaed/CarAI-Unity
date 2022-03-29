@@ -18,7 +18,7 @@ A C# script that uses NavMesh for path finding and simulates vehicle movement us
 ## Requirements:
 
 1. Unity 2018 or higher
-1. NavMeshComponents (This package is different from the built-in NavMesh)
+1. [NavMeshComponents](https://github.com/Unity-Technologies/NavMeshComponents) (This package is different from the built-in NavMesh)
 
 ## Package contents:
 
@@ -64,7 +64,7 @@ Then click on "Bake" and wait for it to finish
 
 ![](https://d6scj24zvfbbo.cloudfront.net/0431874b8eae042dc34a0308369e2315/200000010-3690536907/Screenshot%20%2818%29.png?ph=0a461544cf)
 
-After The NavMesh is Backed, A color (purple color) will appear on the street which represents the area where the AI can move (This means that the AI's pivot won't leave this area
+After The NavMesh is Backed, A color (purple color) will appear on the street which represents the area where the AI can move (This means that the AI's pivot won't leave this area)
 
 **Note**: As you see in the image above. The car's center point(pivot) won't leave the purple area(NavMeshSurface). But, if the whole street is purple. The car might move on the sidewalk. To prevent this use NavMesh Modifier to Override all the sidewalks as a Non-Walkable area. Then bake the surface again.
 
@@ -80,28 +80,13 @@ After The NavMesh is Backed, A color (purple color) will appear on the street wh
 > 
 > And you can leave everything else as it is
 
-#### 2- NavMeshAgent:
-
-![](https://d6scj24zvfbbo.cloudfront.net/0431874b8eae042dc34a0308369e2315/200000012-0030100304/Screenshot%20%2820%29.png?ph=0a461544cf)
-
-> 1- Agent Type: "Car" (the same agent type that is used in backing the NavMeshSurface)
-> 
-> 2- Steering settings won't affect anything since the Agent is used for generating the path only.
-> 
-> 3- Obstacle Avoidance similar to Steering Settings it won't affect anything
-> 
-> 4- Auto Transverse Off mesh & Auto Repath: Set both of them to true
-> 
-> 5- Area Mask: choose the NavMesh Layers you want the Car to move in (the same Layer that's used in Backing the NavMeshSurface)
-
-
-#### 3- WheelColliders:
+#### 2- WheelColliders:
 
 **Note**: it's highly recommended to [watch this tutorial on wheel colliders](https://youtu.be/j6_SMdWeGFI)
 
 Select all the wheels then "Add component" and choose "Wheel Collider"
 
-Then apply these values:
+Then apply these values(these values may differ according to your scenario):
 
 ![](https://d6scj24zvfbbo.cloudfront.net/0431874b8eae042dc34a0308369e2315/200000029-0360f03611/Screenshot%20%2851%29.png?ph=0a461544cf)
 
@@ -139,7 +124,6 @@ You need to attach "CarAI.cs" Script to the car. Then Follow these steps:
 >  
 > 3- Car Front: Create a new empty GameObject as a child of the vehicle then place this object at the front of the vehicle and assign this Gameobject to `Car Front` Field
 > 
-> **Note**: the following tables are very important. So, read them carefully and I will explain every point in details
 > 
 > #### 4- General Parameters: 
 > 

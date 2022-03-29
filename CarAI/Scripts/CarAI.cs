@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,8 +9,8 @@ public class CarAI : MonoBehaviour
     [Header("Car Wheels (Wheel Collider)")]// Assign wheel Colliders through the inspector
     public WheelCollider frontLeft;
     public WheelCollider frontRight;
-    public WheelCollider backRight;
     public WheelCollider backLeft;
+    public WheelCollider backRight;
 
     [Header("Car Wheels (Transform)")]// Assign wheel Transform(Mesh render) through the inspector
     public Transform wheelFL;
@@ -205,7 +206,7 @@ public class CarAI : MonoBehaviour
             if (NavMesh.SamplePosition(destination, out NavMeshHit hit, 150, NavMeshAreaBite) &&
                 NavMesh.CalculatePath(sourcePostion, hit.position, NavMeshAreaBite, path))
             {
-                if (CheckForAngle(path.corners[1], sourcePostion, direction))
+                if (path.corners.ToList().Count() > 1&& CheckForAngle(path.corners[1], sourcePostion, direction))
                 {
                     waypoints.AddRange(path.corners.ToList());
                     debug("Custom Path generated successfully", false);
@@ -297,16 +298,16 @@ public class CarAI : MonoBehaviour
             backLeft.brakeTorque = 0;
             backRight.brakeTorque = 0;
 
-            int SpeedofWheels = (int)((frontLeft.rpm + frontRight.rpm + backLeft.rpm + backRight.rpm) / 4);
+            int SpeedOfWheels = (int)((frontLeft.rpm + frontRight.rpm + backLeft.rpm + backRight.rpm) / 4);
 
-            if (SpeedofWheels < LocalMaxSpeed)
+            if (SpeedOfWheels < LocalMaxSpeed)
             {
                 backRight.motorTorque = 400 * MovementTorque;
                 backLeft.motorTorque = 400 * MovementTorque;
                 frontRight.motorTorque = 400 * MovementTorque;
                 frontLeft.motorTorque = 400 * MovementTorque;
             }
-            else if (SpeedofWheels < LocalMaxSpeed + (LocalMaxSpeed * 1 / 4))
+            else if (SpeedOfWheels < LocalMaxSpeed + (LocalMaxSpeed * 1 / 4))
             {
                 backRight.motorTorque = 0;
                 backLeft.motorTorque = 0;

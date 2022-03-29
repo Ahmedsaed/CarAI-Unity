@@ -3,7 +3,7 @@
 public class controllingCarAI : MonoBehaviour
 {
     //This is an example script. To show you how to control the AI using script(At Runtime)
-
+    private int index;
     public CarAI carAI;
     
     void variables()

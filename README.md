@@ -9,7 +9,6 @@ A C# script that uses NavMesh for path finding and simulates vehicle movement us
   - [Car Model Components]()
 - CarAI Package
   - [Setup CarAI.cs]()
-  - [Options]()
 - Programming
   - [Setting Variables through code]()
   - [Calling methods through code]()
@@ -132,7 +131,7 @@ Then apply these values:
 
 You need to attach "CarAI.cs" Script to the car. Then Follow these steps:
 
-![](https://d6scj24zvfbbo.cloudfront.net/0431874b8eae042dc34a0308369e2315/200000014-f13aaf13ad/Screenshot%20%2823%29.png?ph=0a461544cf)
+![](https://user-images.githubusercontent.com/37080003/160667546-708614ea-aee1-45c9-98f4-198854da4216.png)
 
 > 1- Car Wheels (Wheel collider): Assign each wheel collider to its corresponding location
 >  
@@ -142,80 +141,31 @@ You need to attach "CarAI.cs" Script to the car. Then Follow these steps:
 > 
 > **Note**: the following tables are very important. So, read them carefully and I will explain every point in details
 > 
-> #### 4- CarAI Parameters: 
+> #### 4- General Parameters: 
 > 
-> ![](https://d6scj24zvfbbo.cloudfront.net/0431874b8eae042dc34a0308369e2315/200000015-270382703a/Screenshot%20%2883%29.png?ph=0a461544cf)
-> 
-> 1- Patrol: This is useful for traffic systems as the AI will generate a random destination when it reaches its current active one.
+> 1- Nav Mesh Layers: Enter the name of the layers you want the AI to move in
 >
 > 2- Max Steering Angle: The Maximum steering angle for the vehicle
 >
 > 3- Max RPM: You can use it to control the speed of the vehicle the lower the value the slower the car
 >
-> 4- NavMesh Layer: The name of the Layer that the car can move on (the one that is used in backing the Surface).
+> #### 5- Destination Parameters:
 >
-> 5- Show Gizmos: it shows the FOV of the AI and wire spheres representing the waypoints of the current path
+> 1- Patrol: This is useful for traffic systems as the AI will keep generating a random destination after it reaches the active one.
+>
+> 2- Custom Destination: If a transform is assigned then the AI will keep generating a path to that destination
+>
+> **Note**: if both `Patrol` is True and `Custom Destination` is assigned, then the AI will keep generating a path to the custom destination. (In Other words, `Custom Destination` has priority over `Patrol`)
+>
+> #### 6- Debug:
+>
+> 1- Show Gizmos: Show the FOV of the AI and wire spheres representing the waypoints of the current path
 > 
 > What is the FOV of the AI?
 > 
 > In unity, the normal AI can turn around, and this behavior can't be applied to cars because they have steering angles. So, I created a field of view for the AI to prevent it from turning more than `Max Steering Angle` Away from his forward position.
-> 
-> #### 5- Custom Destination:
-> ![](https://d6scj24zvfbbo.cloudfront.net/0431874b8eae042dc34a0308369e2315/200000017-96a9a96a9c/Screenshot%20%2884%29.png?ph=0a461544cf)
-> 
-> 1- Destination: If a transform is assigned then the AI will create a path to that destination, else it will pick a random one
-> 
-> 2- Dynamic Destination: if true then the AI will keep regenerating paths to the `Destination` every `Delay` seconds
-> 
-> 3- Max Attempts: Maximum number of attempts for the AI to find a path
-> 
-> 4- Delay: Number of seconds between each path generation
-> 
-> **Note**: For the best performance try lowering the `Max Attempts` and increase the `delay`
-
-## Options
-
-Here are all of the possible options
-
-### 1- Patrol & Dynamic Destination:
-
-- **If patrol is false & Dynamic Destination is false:**
-
-> If a custom destination is assigned, the AI will try to generate a path to it. if it keeps failing it will try again. But, once it reaches `Max Attempts` it will stop. Since there is no destination to go
-
-- **If patrol is true & Dynamic Destination is false:**
-
-> If a custom destination isn't assigned, The AI will generate a random path.
-
-> If a custom destination is assigned, The AI will try to generate a path to it. if it keeps failing it will try again. But, once it reaches `Max Attempts` it will generate a path to a random destination.
-
-- **If patrol is true & Dynamic Destination is true:**
-
-> If a custom destination isn't assigned, The AI will generate a random path.
-
-> If a custom destination is assigned, The AI will try to generate a path to it. if it keeps failing it will try again. But, once it reaches `Max Attempts` it will wait for the delay to end then it will try to generate a path to the custom destination again, And so on.
-
-> **Note:**
-> 
-> 1- If it's impossible to generate a path to the custom destination the car won't move (The AI will keep searching for a path),
-
-- **If patrol is false & Dynamic Destination is true:**
-
-> If a custom destination isn't assigned, The car won't move
-
-> If a custom destination is assigned, The AI will try to generate a path to it. if it keeps failing it will try again. But, once it reaches `Max Attempts` it will wait for the delay to end then it will try to generate a path to the custom destination again
-
-> **Note:** once it reaches its custom destination it will stop
-
-### 2- Dynamic Destination & Max Attempts:
-
-If `Dynamic Destination` is true & a custom destination is assigned then the AI will try to generate a path but if it keeps falling more than `Max Attempts` it will stop generating the path until the Delay ends
-
-Note: this is used to optimize performance, For a better performance try lowering the `Max Attempts` and increase the delay
-
-### 3- Dynamic Destination & Custom Destination:
-
-If Dynamic Destination is false and the agent reached its Destination then the Destination (transform) will reset to nothing
+>
+> 2- Debugger: Display debugging info in the console
 
 --- 
 

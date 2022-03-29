@@ -177,15 +177,11 @@ You will find these examples in a script called "controllingCarAI.cs" in the pac
 
 ### 1- Setting Variables through code:
 
-![](https://d6scj24zvfbbo.cloudfront.net/0431874b8eae042dc34a0308369e2315/200000018-b289fb28a1/Screenshot%20%2824%29.png?ph=0a461544cf)
-
-![](https://d6scj24zvfbbo.cloudfront.net/0431874b8eae042dc34a0308369e2315/200000024-b41e2b41e4/Screenshot%20%2830%29.png?ph=0a461544cf)
-
-![](https://d6scj24zvfbbo.cloudfront.net/0431874b8eae042dc34a0308369e2315/200000022-9453b9453e/Screenshot%20%2828%29.png?ph=0a461544cf)
+![](https://user-images.githubusercontent.com/37080003/160671805-b8cee9be-09c7-4579-b314-4111db221da9.png)
 
 ### 2- Calling methods through code:
 
-![](https://d6scj24zvfbbo.cloudfront.net/0431874b8eae042dc34a0308369e2315/200000023-161f7161f9/Screenshot%20%2829%29.png?ph=0a461544cf)
+![](https://user-images.githubusercontent.com/37080003/160672169-990be5f9-4052-4c41-ad52-09f9363302f5.png)
 
 ---
 

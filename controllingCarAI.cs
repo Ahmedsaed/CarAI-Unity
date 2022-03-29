@@ -8,9 +8,9 @@ public class controllingCarAI : MonoBehaviour
     
     void variables()
     {
-        //1- Patrol = true && Patrol = false
+        //1- Patrol = true 
         carAI.Patrol = true;
-        //or
+        // Patrol = false
         carAI.Patrol = false;
 
         //2- Set the maximum steering angle
@@ -20,7 +20,7 @@ public class controllingCarAI : MonoBehaviour
         carAI.MaxRPM = 150;
 
         //4- Set the NavMesh Layer name
-        //carAI.NavMeshLayer = "LayerName";
+        carAI.NavMeshLayers[index] = "LayerName";
 
         //5- Show Gizmos
         carAI.ShowGizmos = true;
@@ -31,20 +31,14 @@ public class controllingCarAI : MonoBehaviour
         carAI.move = true;
         //or apply brakes
         carAI.move = false;
-
-        //8- Set maximum attempts
-        //carAI.MaxAttempts = 50;
-
-        //9- Set delay
-        //carAI.delay = 3;
     }
 
     void Methods()
     {
-        //2- Creates a path to a new random Destination
+        //1- Generates a path to a new random Destination
         carAI.RandomPath();
 
-        //3- Creates a path to a new custom Destination
+        //2- Generates a path to a new custom Destination
         carAI.CustomPath(gameObject.transform);
     }
 }

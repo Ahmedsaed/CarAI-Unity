@@ -284,7 +284,7 @@ public class CarAI : MonoBehaviour
         frontRight.steerAngle = SteeringAngle;
     }
 
-    void Movement() // moves the car forward and backward depending on the input
+    void Movement() // moves the car forward and backward depending on the value of MovementTorque
     {
         if (move == true && allowMovement == true)
             allowMovement = true;
